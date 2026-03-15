@@ -1,0 +1,145 @@
+name: Build React Native APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build type'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+        - debug
+        - release
+
+env:
+  # React Native and Android configuration
+  ANDROID_COMPILE_SDK: 36
+  ANDROID_TARGET_SDK: 36
+  ANDROID_MIN_SDK: 24
+  NDK_VERSION: 27.0.12077973
+  JAVA_VERSION: 17
+  NODE_VERSION: 18
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: ${{ env.JAVA_VERSION }}
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        api-level: ${{ env.ANDROID_COMPILE_SDK }}
+        target: google_apis
+        arch: x86_64
+
+    - name: Cache Gradle
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+          android/.gradle
+        key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          gradle-${{ runner.os }}-
+
+    - name: Cache NPM Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          npm-${{ runner.os }}-
+
+    - name: Install NPM Dependencies
+      run: npm ci --legacy-peer-deps
+
+    - name: Validate Android Environment
+      run: |
+        echo "Java Version:"
+        java -version
+        echo "Android SDK:"
+        $ANDROID_HOME/tools/bin/sdkmanager --list | grep "build-tools\|platforms" | head -10
+        echo "NDK Version:"
+        ls -la $ANDROID_HOME/ndk/ || echo "NDK directory not found"
+
+    - name: Make Gradlew Executable
+      run: chmod +x android/gradlew
+
+    - name: Clean Build Directory
+      run: |
+        cd android
+        ./gradlew clean --no-daemon --info
+
+    - name: Build APK
+      run: |
+        cd android
+        ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} --no-daemon --info --stacktrace
+      env:
+        # Ensure clean build environment
+        GRADLE_OPTS: "-Xmx4g -XX:MaxMetaspaceSize=512m"
+        # React Native optimizations
+        FLIPPER_DISABLE: true
+        # Android build optimizations
+        ORG_GRADLE_PROJECT_reactNativeArchitectures: x86,armeabi-v7a,arm64-v8a,x86_64
+
+    - name: Verify APK Generation
+      run: |
+        APK_PATH="android/app/build/outputs/apk/${{ github.event.inputs.build_type || 'debug' }}"
+        ls -la "$APK_PATH"
+        if [ -f "$APK_PATH/app-${{ github.event.inputs.build_type || 'debug' }}.apk" ]; then
+          echo "✅ APK successfully generated"
+          file "$APK_PATH/app-${{ github.event.inputs.build_type || 'debug' }}.apk"
+        else
+          echo "❌ APK generation failed"
+          exit 1
+        fi
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: dara-doll-${{ github.event.inputs.build_type || 'debug' }}-apk
+        path: android/app/build/outputs/apk/${{ github.event.inputs.build_type || 'debug' }}/app-${{ github.event.inputs.build_type || 'debug' }}.apk
+        retention-days: 30
+
+    - name: Upload Build Logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: build-logs-${{ github.run_number }}
+        path: |
+          android/app/build/outputs/logs/
+          android/build/reports/
+        retention-days: 7
+
+    - name: Build Summary
+      if: success()
+      run: |
+        echo "## 🎉 Build Successful!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**APK Details:**" >> $GITHUB_STEP_SUMMARY
+        APK_PATH="android/app/build/outputs/apk/${{ github.event.inputs.build_type || 'debug' }}/app-${{ github.event.inputs.build_type || 'debug' }}.apk"
+        echo "- **File:** \`$(basename $APK_PATH)\`" >> $GITHUB_STEP_SUMMARY
+        echo "- **Size:** $(du -h $APK_PATH | cut -f1)" >> $GITHUB_STEP_SUMMARY
+        echo "- **Build Type:** ${{ github.event.inputs.build_type || 'debug' }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Download:** The APK is available as an artifact in this workflow run." >> $GITHUB_STEP_SUMMARY

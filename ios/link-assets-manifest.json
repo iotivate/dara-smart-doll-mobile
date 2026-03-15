@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Khula-SemiBold.ttf",
+      "sha1": "7aeb6a19530a022e9fe6f572650ba8ac322eeaa3"
+    },
+    {
+      "path": "src/assets/fonts/Khula-Bold.ttf",
+      "sha1": "12f557f3a914b80613b50e9aaf84705a04f2f189"
+    },
+    {
+      "path": "src/assets/fonts/Khula-Light.ttf",
+      "sha1": "cb8360a0eff785de29e43d31446293daaa20fef7"
+    },
+    {
+      "path": "src/assets/fonts/Khula-ExtraBold.ttf",
+      "sha1": "af8e7cfc59ff646f958a39c721b93fa9409a73c9"
+    },
+    {
+      "path": "src/assets/fonts/FontFamily.tsx",
+      "sha1": "7d4c632932eec6dada2fe49cbc898b243437144f"
+    },
+    {
+      "path": "src/assets/fonts/Khula-Regular.ttf",
+      "sha1": "a27637da252cf1ca71f0d21a71c414854bdc0127"
+    }
+  ]
+}

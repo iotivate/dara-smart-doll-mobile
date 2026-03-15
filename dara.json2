@@ -1,0 +1,1657 @@
+Profile  {
+  "Profile": {
+    "title": "Profile",
+    "profile_name": "Profile name",
+    "update_password": "Update Password",
+    "display_language": "Display Language",
+    "notification_manage": "Notification Manage",
+    "support_feedback": "Support & Feedback",
+    "bluetooth_pairing": "Bluetooth Pairing Manager",
+    "logout": "Logout"
+  },
+
+  "Theme": {
+    "light_mode": "Light Mode",
+    "dark_mode": "Dark Mode",
+    "custom_mode": "Custom Mode",
+    "theme_updated_success": "Theme preference updated",
+    "theme_update_failed": "Failed to update theme preference"
+  },
+
+  "Avatar": {
+    "choose_avatar": "Choose Avatar",
+    "update_profile_success": "Profile picture updated successfully",
+    "profile_data_not_available": "Profile data not available",
+    "update_profile_failed": "Failed to update profile picture"
+  },
+
+  "Password": {
+    "update_password_title": "Update Password",
+    "current_password": "Current Password",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "enter_current_password": "Please enter current password",
+    "enter_new_password": "Please enter new password",
+    "confirm_new_password": "Please confirm new password",
+    "password_min_length": "Password must be at least 6 characters",
+    "password_not_match": "Passwords do not match",
+    "password_update_success": "Password updated successfully",
+    "password_update_failed": "Failed to update password",
+    "update_password_button": "Update Password",
+    "cancel": "Cancel"
+  },
+
+  "Logout": {
+    "confirmation_title": "Are you sure?",
+    "confirmation_message": "This action will log you out of your account. You will need to log in again to access your data and continue using the app.",
+    "logout_button": "Logout",
+    "logging_out": "Logging out...",
+    "logout_success": "Logged out successfully",
+    "logout_failed": "Logout failed. Please try again"
+  },
+
+  "Common": {
+    "error": "Error",
+    "network_error": "Network error occurred",
+    "request_failed": "Request failed. Please try again"
+  }
+}   Dashboard   {
+  "hi": "Hi",
+  "parent": "Parent",
+  "parent_account": "Parent Account",
+
+  "select_child": "Select Child",
+  "select_child_profile": "Select a child profile",
+  "no_child_profiles": "No child profiles available",
+  "select_child_to_view_progress": "Select a child profile to view progress",
+
+  "child": "Child",
+  "stars_earned_today": "5 stars earned today",
+  "learning_progress_minutes": "{{minutes}} min learning progress",
+
+  "last_played": "Last Played",
+  "no_content_played": "No content played yet",
+
+  "progress_report": "Progress Report",
+  "next_scheduled_lesson": "Next Scheduled Lesson",
+  "no_upcoming_lessons": "No upcoming lessons",
+  "no_schedule": "No schedule",
+
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "starting_soon": "Starting soon",
+  "in_minutes": "In {{count}} minutes",
+  "in_hours": "In {{count}} hours",
+  "in_days": "In {{count}} days",
+  "in_weeks": "In {{count}} weeks",
+  "next_month": "Next month",
+
+  "connect_device": "Connect Device",
+  "device_management": "Device Management",
+  "manage_profiles": "Manage Profiles",
+  "set_schedule": "Set Schedule",
+  "view_progress": "View Progress",
+  "content_settings": "Content Settings",
+
+  "enter_child_mode": "Enter Child Mode",
+
+  "history": "History",
+  "recent_activities": "{{name}}'s recent activities",
+  "no_history_for_child": "No history available for this child",
+  "select_child_for_history": "Select a child profile to view history",
+  "refresh": "Refresh",
+  "loading_more": "Loading more...",
+
+  "played": "Played",
+  "minutes": "minutes",
+  "just_now": "Just now",
+  "min_ago": "{{count}} min ago",
+  "hours_ago": "{{count}} hours ago",
+  "days_ago": "{{count}} days ago",
+  "recently": "Recently",
+
+  "history_item_title": "History Item",
+  "category": "Category",
+  "language": "Language",
+  "duration": "Duration",
+  "close": "Close",
+
+  "notifications": "Notifications",
+
+  "error": "Error",
+  "failed_to_load_history": "Failed to load history",
+
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "enter_username": "Please enter username",
+  "enter_password": "Please enter password",
+  "invalid_credentials": "Invalid username or password"
+}
+ SignUp Screen  {
+  "parent_registration": "Parent Registration",
+
+  "username": "Username",
+  "username_placeholder": "david_smith_13456",
+  "username_required": "Please enter a username",
+  "username_invalid": "Username can only contain letters, numbers, underscores and dots",
+  "username_min": "Username must be at least 3 characters long",
+  "username_max": "Username must not exceed 30 characters",
+
+  "email_address": "Email Address",
+  "email_placeholder": "davidsmith@gmail.com",
+  "email_required": "Please enter an email address",
+  "email_invalid": "Please enter a valid email address",
+
+  "phone_number": "Phone Number",
+  "phone_placeholder": "Enter phone number",
+  "phone_required": "Please enter a phone number",
+  "phone_invalid": "Please enter a valid phone number for {{country}}",
+
+  "enter_password": "Enter Password",
+  "password_placeholder": "Password",
+  "password_required": "Please enter a password",
+  "password_min": "Password must be at least 8 characters long",
+  "password_max": "Password must not exceed 15 characters",
+  "password_invalid": "Password must contain 8-15 characters with uppercase, lowercase, number, and special character (@$!%*?&)",
+
+  "confirm_password": "Confirm Password",
+  "confirm_password_placeholder": "Confirm your password",
+  "confirm_password_required": "Please confirm your password",
+  "password_mismatch": "Passwords do not match",
+
+  "terms_prefix": "I agree to the",
+  "terms_and_conditions": "Terms and Conditions",
+  "privacy_policy": "Privacy Policy",
+  "terms_required": "You must accept the Terms and Conditions to continue",
+
+  "register": "Register",
+
+  "already_have_account": "Already have an account?",
+  "login": "Login",
+
+  "registration_failed": "Registration failed. Please try again.",
+  "unexpected_error": "Unexpected error occurred",
+
+  "error_title": "Sorry",
+  "continue": "Continue"
+}
+  Forgot Password Screen   {
+  "forgot_password_title": "Forgot Password",
+
+  "forgot_password_description": "Please enter your registered email address. We’ll send you a link to reset your password.",
+
+  "enter_email": "Enter Email",
+  "email_placeholder": "test@gmail.com",
+
+  "email_required": "Please enter an email address",
+  "email_invalid": "Please enter a valid email address",
+
+  "send_otp": "Send OTP",
+
+  "request_failed": "Request failed. Please try again.",
+  "unexpected_error": "Unexpected error occurred",
+
+  "success": "Success",
+  "error": "Error",
+
+  "continue": "Continue",
+  "try_again": "Try Again"
+}
+  Verify Forgot Password Screen  {
+  "forgot_password_title": "Forgot Password",
+
+  "verify_otp_subtitle": "Please verify OTP sent to your email to reset your password.",
+
+  "email": "Email",
+  "email_placeholder": "test@gmail.com",
+
+  "enter_otp": "Enter OTP",
+
+  "otp_required": "Please enter otp",
+  "otp_invalid": "Please enter valid otp",
+  "otp_invalid_six_digit": "Please enter a valid 6-digit OTP",
+
+  "resend_otp": "RESEND OTP",
+  "didnt_get_otp": "Didn’t get the OTP ?",
+  "resend_sms_in": "Resend SMS in",
+
+  "proceed": "Proceed",
+
+  "request_failed": "Request failed. Please try again.",
+  "unexpected_error": "Unexpected error occurred"
+}
+ Create Password Screen  {
+  "create_password_title": "Create Password",
+  "create_password_subtitle": "Set up a new password to protect your account and ensure secure access.",
+
+  "new_password": "New Password",
+  "new_password_placeholder": "Enter Password",
+
+  "confirm_password": "Confirm Password",
+  "confirm_password_placeholder": "Enter Confirm Password",
+
+  "update": "Update",
+
+  "password_required": "Please enter a password",
+  "password_min_length": "Password must be at least 6 characters long",
+  "confirm_password_required": "Please confirm your password",
+  "password_not_match": "Passwords do not match",
+
+  "request_failed": "Request failed. Please try again.",
+  "unexpected_error": "Unexpected error occurred"
+}
+ Dashboard   {
+  "hi": "Hi",
+
+  "history": "History",
+  "recent_activity": "{{name}}'s recent activities",
+
+  "last_played": "Last Played",
+  "no_content_played": "No content played yet",
+
+  "progress_report": "Progress Report",
+  "next_scheduled_lesson": "Next Scheduled Lesson",
+  "no_upcoming_lessons": "No upcoming lessons",
+
+  "connect_device": "Connect Device",
+  "device_management": "Device Management",
+  "manage_profiles": "Manage Profiles",
+  "set_schedule": "Set Schedule",
+  "view_progress": "View Progress",
+  "content_settings": "Content Settings",
+
+  "enter_child_mode": "Enter Child Mode",
+
+  "no_history_child": "No history available for this child",
+  "select_child_history": "Select a child profile to view history",
+  "loading_more": "Loading more...",
+
+  "refresh": "Refresh",
+  "select_child": "Select Child",
+
+  "just_now": "Just now",
+  "recently": "Recently",
+
+  "error": "Error",
+  "history_load_failed": "Failed to load history"
+}
+ Bluetooth  {
+  "bluetooth_title": "Bluetooth Connection",
+  "bluetooth_subtitle": "Connect your DARA Smart Doll to continue",
+
+  "bluetooth_enable": "Enable Bluetooth",
+  "bluetooth_disabled": "Bluetooth is turned off. Please enable it.",
+
+  "bluetooth_permission_required": "Bluetooth permission required",
+  "bluetooth_permission_desc": "Please allow Bluetooth permission to scan nearby devices",
+
+  "bluetooth_scan": "Scan for Devices",
+  "bluetooth_scanning": "Scanning for nearby devices...",
+  "bluetooth_stop_scan": "Stop Scan",
+
+  "bluetooth_device_found": "Devices Found",
+  "bluetooth_no_device": "No Bluetooth devices found",
+
+  "bluetooth_connect": "Connect",
+  "bluetooth_connecting": "Connecting to device...",
+  "bluetooth_connected": "Device connected successfully",
+  "bluetooth_disconnected": "Device disconnected",
+
+  "bluetooth_connection_failed": "Failed to connect to device",
+  "bluetooth_try_again": "Please try again",
+
+  "bluetooth_already_connected": "Device already connected",
+
+  "bluetooth_disconnect": "Disconnect Device",
+  "bluetooth_confirm_disconnect": "Are you sure you want to disconnect?",
+
+  "bluetooth_device_name": "Device Name",
+  "bluetooth_device_id": "Device ID",
+
+  "bluetooth_error": "Bluetooth Error",
+  "bluetooth_unexpected_error": "Unexpected Bluetooth error occurred",
+
+  "bluetooth_continue": "Continue",
+  "bluetooth_cancel": "Cancel"
+}
+ Who is watching  {
+  "whos_watching_title": "Who's watching?",
+
+  "profile_active": "Active",
+  "profile_inactive": "Inactive",
+
+  "add_new_child": "Add New Child",
+
+  "no_child_title": "No child found",
+  "no_child_subtitle": "You haven’t added any child profiles yet.",
+
+  "delete_profile_title": "Delete Profile?",
+  "delete_profile_message": "Are you sure you want to delete this profile? This action cannot be undone.",
+  "delete": "Delete",
+  "deleting": "Deleting...",
+  "cancel": "Cancel",
+
+  "update_password_title": "Update Password",
+  "updating": "Updating...",
+  "update": "Update",
+
+  "new_password": "New Password",
+  "confirm_password": "Confirm Password",
+
+  "password_required": "Password is required",
+  "password_min_length": "Password must be at least 6 characters",
+  "password_mismatch": "Passwords do not match",
+
+  "child_profile_title": "Child Profile",
+
+  "username_label": "Username",
+  "age_range_label": "Age Range",
+  "gender_label": "Gender",
+  "language_label": "Language",
+  "status_label": "Status",
+  "device_id_label": "Device ID",
+
+  "not_available": "N/A",
+
+  "profile_activated": "Profile activated successfully",
+  "profile_deactivated": "Profile deactivated successfully",
+
+  "password_updated_success": "Password updated successfully",
+  "profile_deleted_success": "Profile deleted successfully",
+
+  "network_error": "Network error occurred",
+  "unexpected_error": "Unexpected error occurred"
+}
+  AddNew child  {
+  "add_child_title": "Add Child",
+
+  "username_label": "User Name",
+  "username_placeholder": "Enter name",
+  "username_error": "Please enter a username",
+
+  "password_label": "Password",
+  "password_placeholder": "Enter Password",
+  "password_error": "Please enter a password",
+
+  "confirm_password_label": "Confirm Password",
+  "confirm_password_placeholder": "Enter Password Again",
+  "confirm_password_error": "Passwords do not match",
+
+  "age_label": "Age",
+  "age_placeholder": "Select Age Range",
+  "age_error": "Please select age range",
+
+  "gender_label": "Gender",
+  "gender_placeholder": "Select Gender",
+  "gender_error": "Please select gender",
+
+  "language_label": "Select language",
+  "language_placeholder": "Select language",
+
+  "playlist_label": "Select Playlist Content",
+  "playlist_placeholder": "Select Playlist Content",
+  "playlist_error": "Please select playlist content",
+
+  "save_button": "Save",
+  "creating_button": "Creating...",
+
+  "choose_icon_title": "Choose Icon",
+
+  "child_create_success": "Child profile created successfully!",
+  "common_error": "Something went wrong. Please try again."
+}
+ ExistingSession  {
+  "existing_session_title": "Existing Session",
+
+  "loading_sessions": "Loading sessions...",
+
+  "no_sessions_title": "No scheduled sessions found",
+  "no_sessions_subtitle": "Create your first schedule to get started",
+
+  "child_default_name": "Child",
+  "age_suffix": "Age",
+
+  "session_default_title": "Session",
+  "category_default": "Category",
+
+  "time_label": "Time",
+  "time_not_set": "Time not set",
+
+  "repeat_label": "Repeat",
+  "repeat_once": "Once",
+  "repeat_daily": "Daily",
+  "repeat_weekly": "Weekly",
+
+  "notifications_on": "Notifications ON",
+  "notifications_off": "Notifications OFF",
+
+  "add_schedule_button": "Add Schedule",
+
+  "delete_session_title": "Delete Session?",
+  "delete_session_subtitle": "Are you sure you want to delete this session? This action cannot be undone.",
+  "delete_session_button": "Delete Session",
+  "deleting_session": "Deleting...",
+
+  "delete_success": "Session deleted successfully",
+  "delete_failed": "Failed to delete session",
+
+  "error_title": "Error",
+  "missing_delete_data": "Missing required data for deletion",
+  "cannot_delete_session": "Cannot delete: Missing required session data",
+
+  "network_error": "Network error occurred",
+  "api_load_failed": "Failed to load sessions",
+
+  "success_title": "Success",
+
+  "edit_session": "Edit Session",
+
+  "notifications_label": "Notifications",
+
+  "bell_on": "Bell On",
+  "bell_off": "Bell Off"
+}
+ EditExistingSession  {
+  "edit_schedule_title": "Edit Schedule",
+
+  "select_child_label": "Select Child",
+  "select_active_child_placeholder": "Select Active Child",
+  "child_not_selected_error": "Please select a child",
+
+  "start_time_label": "Start Time",
+  "hour_placeholder": "HH",
+  "minute_placeholder": "MM",
+  "selected_time_label": "Selected time",
+
+  "invalid_time_error": "Please select a valid time",
+
+  "repeat_session_label": "Repeat Session",
+  "repeat_once": "Once",
+  "repeat_daily": "Daily",
+  "repeat_weekly": "Weekly",
+
+  "select_days_label": "Select Days:",
+  "selected_days_label": "Selected",
+
+  "weekly_days_error": "Please select at least one day for weekly repeat",
+
+  "select_category_label": "Select Categories",
+  "select_category_placeholder": "Select Categories",
+  "category_not_selected_error": "Please select a category",
+
+  "select_playlist_label": "Select Playlist Content",
+  "select_playlist_placeholder": "Select Playlist Content",
+  "select_category_first": "Select a category first",
+  "playlist_not_selected_error": "Please select at least one audio",
+
+  "notification_label": "Notification",
+
+  "update_schedule_button": "Update Schedule",
+
+  "update_success_title": "Success",
+  "update_success_message": "Schedule updated successfully!",
+  "update_failed_message": "Failed to update schedule. Please try again.",
+
+  "error_title": "Error",
+  "network_error": "Network error occurred",
+
+  "audio_modal_title": "Select Audio Content",
+  "audio_search_placeholder": "Search audio by title or description...",
+
+  "audio_selected_count": "audio(s) selected",
+  "no_audio_for_category": "No audio content available for this category",
+  "no_matching_audio": "No matching audio found",
+
+  "modal_cancel": "Cancel",
+  "modal_select": "Select",
+  "modal_select_with_count": "Select",
+
+  "fetch_children_error": "Failed to fetch children data",
+  "fetch_category_error": "Failed to fetch categories",
+  "fetch_audio_error": "Failed to fetch audio content",
+
+  "invalid_child_selection": "Invalid child selection",
+  "no_age_range_error": "No age range provided"
+}
+ SetSchudler Session  {
+  "set_schedule_title": "Set Schedule",
+
+  "select_child_label": "Select Child",
+  "select_active_child_placeholder": "Select Active Child",
+  "select_child_first_title": "Select Child First",
+  "select_child_first_message": "Please select a child to load categories",
+  "no_child_selected_error": "Please select a child",
+  "invalid_child_selection_error": "Invalid child selection",
+
+  "start_time_label": "Start Time",
+  "hour_placeholder": "HH",
+  "minute_placeholder": "MM",
+  "selected_time_label": "Selected time",
+  "invalid_time_error": "Please select a valid time",
+
+  "repeat_session_label": "Repeat Session",
+  "repeat_once": "Once",
+  "repeat_daily": "Daily",
+  "repeat_weekly": "Weekly",
+
+  "select_days_label": "Select Days:",
+  "selected_days_label": "Selected",
+  "weekly_days_error": "Please select at least one day for weekly repeat",
+
+  "select_categories_label": "Select Categories",
+  "select_categories_placeholder": "Select Categories",
+  "select_child_to_enable_categories": "Select child first",
+  "no_categories_found": "No categories found for this age range",
+  "category_required_error": "Please select a category",
+
+  "select_playlist_label": "Select Playlist Content",
+  "select_playlist_placeholder": "Select Playlist Content",
+  "select_category_first": "Select a category first",
+  "playlist_required_error": "Please select at least one audio",
+
+  "notification_label": "Notification",
+
+  "save_schedule_button": "Save Schedule",
+
+  "audio_modal_title": "Select Audio Content",
+  "audio_search_placeholder": "Search audio by title or description...",
+
+  "audio_selected_count": "{{count}} audio(s) selected",
+  "no_audio_for_category": "No audio content available for this category",
+  "no_matching_audio": "No matching audio found",
+
+  "modal_cancel": "Cancel",
+  "modal_select": "Select",
+  "modal_select_with_count": "Select ({{count}})",
+
+  "success_title": "Success",
+  "schedule_created_success": "Schedule created successfully!",
+
+  "error_title": "Error",
+  "network_error": "Network error occurred",
+  "fetch_children_failed": "Failed to fetch children data",
+  "fetch_categories_failed": "Failed to fetch categories",
+  "fetch_audio_failed": "Failed to fetch audio content",
+  "schedule_failed": "Failed to schedule class. Please try again.",
+
+  "info_title": "Info"
+}
+ View Progress  {
+  "progress_screen_title": "Progress",
+
+  "loading_progress": "Loading progress...",
+  "loading_chart_data": "Loading chart data...",
+
+  "tab_daily": "Daily",
+  "tab_weekly": "Weekly",
+  "tab_monthly": "Monthly",
+
+  "screen_time_title": "Screen Time",
+
+  "today_label": "Today",
+  "this_week_label": "This Week",
+  "this_month_label": "This Month",
+
+  "updated_label": "Updated",
+  "just_now": "Just now",
+
+  "daily_average_label": "Daily average",
+  "weekly_total_label": "Weekly total",
+  "monthly_total_label": "Monthly total",
+
+  "hours_label": "hours",
+  "minutes_label": "min",
+
+  "most_played_title": "Most Played",
+  "most_played_empty": "No most played data available",
+  "minutes_played_label": "min played",
+
+  "progress_title": "Progress",
+  "progress_completed": "Completed",
+  "progress_ongoing": "Ongoing",
+  "progress_pending": "Pending",
+  "progress_percentage_symbol": "%",
+
+  "history_title": "History",
+  "history_empty_prefix": "No history available for",
+
+  "played_label": "Played",
+
+  "category_default": "Category",
+
+  "time_min_ago": "min ago",
+  "time_hour_ago": "hour ago",
+  "time_hours_ago": "hours ago",
+  "time_day_ago": "day ago",
+  "time_days_ago": "days ago"
+}
+ ContentSettingsScreen  {
+  "content_settings_title": "Content Settings",
+
+  "content_settings_description": "Select which learning videos and audios you want your child to access. Preview content before assigning to ensure it's appropriate.",
+
+  "select_child_placeholder": "Select Child",
+
+  "filter_all_content": "All Content",
+  "filter_filtered": "Filtered",
+  "filter_button_label": "Filter",
+
+  "select_category_title": "Select Category",
+  "all_categories_label": "All Categories",
+
+  "loading_content_generic": "Loading content...",
+  "loading_content_for_child": "Loading content for",
+
+  "no_content_available_prefix": "No content available for",
+  "no_content_in_category_suffix": "in this category",
+
+  "card_enabled": "Enabled",
+  "card_disabled": "Disabled",
+  "card_updating": "Updating...",
+
+  "play_button_label": "Play",
+
+  "language_chip_default": "English",
+  "age_default": "3-5 yrs",
+  "duration_default": "5 min",
+
+  "toggle_error_title": "Update Failed",
+  "toggle_error_message": "Failed to update content. Please try again.",
+
+  "generic_error_title": "Error",
+  "generic_error_message": "Something went wrong. Please try again.",
+
+  "missing_data_error": "Missing required data to toggle content",
+
+  "search_button_label": "Search",
+
+  "empty_state_loading": "Loading content...",
+  "empty_state_no_content": "No content available",
+
+  "category_count_suffix": "items"
+}
+ Progress Screen  {
+  "child_progress_title": "Child Progress",
+
+  "favorite_channel_title": "Favorite Channel",
+  "favorite_channel_loading": "Loading favorite channels...",
+  "favorite_channel_empty": "No favorite channels available for {{child}}",
+
+  "learning_categories_title": "Learning Categories",
+  "learning_categories_loading": "Loading learning categories...",
+  "learning_categories_empty": "No learning categories available for {{child}}",
+
+  "no_content_available": "No content available",
+  "one_learning_activity": "1 learning activity",
+  "multiple_learning_activities": "{{count}} learning activities",
+
+  "progress_complete": "{{percent}}% complete",
+
+  "default_child_fallback": "this child",
+
+  "accessibility_favorite_user": "Favorite user {{name}}",
+  "accessibility_category_progress": "{{percent}} percent complete",
+
+  "generic_loading": "Loading...",
+  "generic_error": "Something went wrong. Please try again.",
+
+  "empty_state_no_favorites": "No favorite channels available",
+  "empty_state_no_categories": "No learning categories available"
+}
+ ProductScreen  {
+  "our_products_title": "Our Products",
+
+  "product_version_prefix": "Version",
+
+  "product_no_description": "No description available",
+
+  "proceed_button": "Proceed",
+
+  "loader_loading": "Loading...",
+
+  "error_registration_failed": "Registration failed. Please try again.",
+  "error_unexpected": "Unexpected error occurred",
+
+  "accessibility_selected_product": "Selected product",
+  "accessibility_product_image": "Product image",
+  "accessibility_radio_selected": "Selected",
+
+  "fallback_product_name": "Product",
+  "fallback_product_version": "Version"
+}
+ ProductDetailsScreen  {
+  "product_detail_about_title": "About {{productName}}",
+
+  "product_detail_loading_3d": "Loading 3D Model...",
+
+  "product_detail_type_label": "Type",
+  "product_detail_frequency_label": "Frequency",
+  "product_detail_range_label": "Range",
+  "product_detail_battery_label": "Battery Life",
+
+  "product_detail_no_value": "N/A",
+
+  "product_detail_proceed_button": "Proceed",
+
+  "product_detail_registration_failed": "Registration failed. Please try again.",
+  "product_detail_unexpected_error": "Unexpected error occurred"
+}
+ Success Screen  {
+  "success_title": "Congratulations",
+
+  "success_subtitle": "Welcome to the world of learning in a smart way. We are providing you the best way to learn the module.",
+
+  "success_done_button": "Done"
+}
+ Subscription Screen  {
+  "subscription_header_title": "Subscription & Premium",
+  "subscription_choose_plan": "Choose Plan",
+
+  "subscription_tab_all": "All",
+  "subscription_tab_free": "Free",
+  "subscription_tab_monthly": "Monthly",
+  "subscription_tab_yearly": "Yearly",
+
+  "subscription_loading_plans": "Loading plans...",
+
+  "subscription_no_plans": "No {{planType}} plans available.",
+
+  "subscription_price_free": "FREE",
+  "subscription_price_month": "{{price}}/month",
+  "subscription_price_year": "{{price}}/year",
+
+  "subscription_billing_monthly": "Monthly",
+  "subscription_billing_yearly": "Yearly",
+  "subscription_billing_free": "Free",
+  "subscription_billing_na": "N/A",
+
+  "subscription_button_get_started": "Get Started",
+  "subscription_button_subscribe": "Subscribe Now",
+  "subscription_button_renew": "Renew",
+
+  "subscription_badge_purchased": "Purchased",
+
+  "subscription_feature_children": "{{count}} child",
+  "subscription_feature_children_plural": "{{count}} children",
+
+  "subscription_feature_ai_enabled": "AI Features: Enabled",
+  "subscription_feature_ai_disabled": "AI Features: Disabled",
+
+  "subscription_footer_basic_access": "• All plans include access to basic features",
+  "subscription_footer_upgrade_anytime": "• Upgrade or cancel anytime",
+  "subscription_footer_money_back": "• 30-day money-back guarantee for paid plans",
+
+  "subscription_payment_success_title": "Payment Successful",
+  "subscription_payment_failed_title": "Payment Failed",
+  "subscription_payment_pending_title": "Payment Processing",
+
+  "subscription_payment_success_message": "Your subscription has been processed successfully.",
+  "subscription_payment_failed_message": "Something went wrong. Please try again.",
+  "subscription_payment_pending_message": "Payment is processing. Please wait.",
+
+  "subscription_error_fetch_failed": "Failed to fetch subscription plans",
+  "subscription_error_network": "Network error occurred",
+  "subscription_error_purchase_failed": "Purchase failed",
+  "subscription_error_generic": "Something went wrong. Please try again."
+}
+ Notification Screen  {
+  "notifications_title": "Notifications",
+  "notifications_unread_count": "{{count}} unread",
+  "notifications_mark_all_read": "Mark all as read",
+  "notifications_mark_read": "Mark as read",
+  "notifications_empty_title": "No Notifications",
+  "notifications_refresh": "Refresh",
+  "notifications_time_just_now": "Just now",
+  "notifications_time_min_ago": "{{count}} min ago",
+  "notifications_time_hr_ago": "{{count}} hr ago",
+  "notifications_time_yesterday": "Yesterday",
+  "notifications_error_fetch_failed": "Failed to load notifications",
+  "notifications_error_network": "Network error",
+  "notifications_error_mark_read": "Failed to mark as read",
+  "notifications_error_mark_all_read": "Failed to mark all as read",
+  "notifications_image_preview_close": "Close"
+}
+ Notification Settings Screen  {
+  "settings_title": "Settings",
+  "settings_help_support": "Help and Support",
+  "settings_language": "Language Settings",
+  "settings_privacy": "Privacy Settings",
+  "settings_configure_notifications": "Configure All Notifications",
+  "settings_notifications_subtitle": "Silent mode, sound, alerts categories, connection times",
+
+  "settings_summary_title": "Notification Summary",
+  "settings_summary_silent_mode": "Silent Mode",
+  "settings_summary_sound": "Sound",
+  "settings_summary_active_alerts": "Active Alerts",
+  "settings_summary_connection_time": "Connection Time",
+
+  "settings_clear_cache": "Clear Local Cache/Data",
+  "settings_clear_cache_loading": "Clearing Cache...",
+  "settings_clear_cache_success": "Local cache cleared successfully",
+  "settings_clear_cache_error": "Failed to clear local cache",
+
+  "settings_logout": "Logout",
+  "settings_logout_loading": "Logging out...",
+  "settings_logout_confirm_title": "Are you sure?",
+  "settings_logout_confirm_desc": "This action will log you out of your account. You will need to log in again to access your data.",
+  "settings_logout_success": "Logged out successfully",
+  "settings_logout_cancel": "Cancel"
+}
+ Help and Support Screen  {
+  "help_support_title": "Help & Support",
+
+  "help_tab": "Help",
+  "contact_us_tab": "Contact us",
+  "query_tab": "Query",
+
+  "faq_section_title": "Frequently Asked Questions",
+  "faq_loading": "Loading FAQs...",
+  "faq_load_more": "Loading more FAQs...",
+  "faq_empty": "No FAQs available at the moment.",
+  "faq_untitled": "Untitled FAQ",
+  "faq_no_content": "No content available.",
+
+  "troubleshoot_title": "Troubleshoot",
+  "troubleshoot_bluetooth": "Bluetooth Connectivity",
+  "troubleshoot_audio": "Audio not playing",
+  "troubleshoot_lesson": "Lessons not starting on schedule",
+
+  "contact_email_title": "Email support",
+  "contact_email_sub": "Tap to get support via mail",
+  "contact_call_title": "Call support",
+  "contact_call_sub": "Tap to get support via call",
+
+  "query_select_category": "Select Category",
+  "query_category_technical": "Technical",
+  "query_category_payment": "Payment",
+  "query_category_content": "Content",
+  "query_category_general": "General",
+
+  "query_description_title": "Description",
+  "query_description_placeholder": "Write your query here...",
+  "query_submit_button": "Submit",
+
+  "error_faq_fetch": "Failed to fetch FAQs",
+  "error_faq_generic": "Failed to load FAQs. Please try again."
+}
+ Help and Support Screen 2   {
+  // Header & Tabs
+  "help_support_title": "Help & Support",
+  "help_tab": "Help",
+  "contact_us_tab": "Contact us",
+  "query_tab": "Query",
+
+  // FAQ Section
+  "faq_section_title": "Frequently Asked Questions",
+  "faq_loading": "Loading FAQs...",
+  "faq_load_more": "Loading more FAQs...",
+  "faq_empty": "No FAQs available at the moment.",
+  "faq_untitled": "Untitled FAQ",
+  "faq_no_content": "No content available.",
+
+  // Errors
+  "faq_error_fetch": "Failed to fetch FAQs",
+  "faq_error_generic": "Failed to load FAQs. Please try again.",
+
+  // Troubleshoot
+  "troubleshoot_title": "Troubleshoot",
+  "troubleshoot_bluetooth": "Bluetooth Connectivity",
+  "troubleshoot_audio": "Audio not playing",
+  "troubleshoot_lesson": "Lessons not starting on schedule",
+
+  // Contact Us
+  "contact_email_title": "Email support",
+  "contact_email_subtitle": "Tap to get support via mail",
+  "contact_call_title": "Call support",
+  "contact_call_subtitle": "Tap to get support via call",
+
+  // Query Section
+  "query_select_category_label": "Select Category",
+  "query_category_technical": "Technical",
+  "query_category_payment": "Payment",
+  "query_category_content": "Content",
+  "query_category_general": "General",
+
+  "query_description_title": "Description",
+  "query_description_placeholder": "Write your query here...",
+  "query_submit_button": "Submit"
+}
+ BluetoothTroubleshootingScreen  {
+  // Header
+  "help_support_title": "Help & Support",
+
+  // Main Title
+  "bluetooth_troubleshoot_title": "Troubleshooting Steps",
+
+  // Step 1
+  "bluetooth_step_1_title": "Turn Bluetooth Off & On",
+  "bluetooth_step_1_desc": "Try toggling Bluetooth off and then back on to refresh the connection.",
+
+  // Step 2
+  "bluetooth_step_2_title": "Bring Device Close",
+  "bluetooth_step_2_desc": "Keep your phone and the device within 1-2 meters for stable pairing.",
+
+  // Step 3
+  "bluetooth_step_3_title": "Restart Your Device",
+  "bluetooth_step_3_desc": "Restart both your phone and the Bluetooth device.",
+
+  // Step 4
+  "bluetooth_step_4_title": "Check Battery Level",
+  "bluetooth_step_4_desc": "Ensure your Bluetooth device has sufficient battery.",
+
+  // Step 5
+  "bluetooth_step_5_title": "Forget & Re-pair Device",
+  "bluetooth_step_5_desc": "Forget the device from Bluetooth settings and pair it again.",
+
+  // Button
+  "bluetooth_got_it_button": "Got it"
+}
+ AudioTroubleShoot  {
+  "help_support_title": "Help & Support",
+
+  "audio_troubleshoot_title": "Audio Troubleshooting Steps",
+
+  "audio_step_1_title": "Check Volume Level",
+  "audio_step_1_desc": "Make sure the volume on both your phone and Bluetooth device is not muted or too low.",
+
+  "audio_step_2_title": "Select Bluetooth Audio Output",
+  "audio_step_2_desc": "Go to audio settings and ensure your Bluetooth device is selected as the output.",
+
+  "audio_step_3_title": "Reconnect the Device",
+  "audio_step_3_desc": "Disconnect and reconnect your Bluetooth audio device from settings.",
+
+  "audio_step_4_title": "Check Media Permissions",
+  "audio_step_4_desc": "Ensure the app has permission to play audio via Bluetooth.",
+
+  "audio_step_5_title": "Forget & Pair Again",
+  "audio_step_5_desc": "Forget the device and pair it again for a fresh connection.",
+
+  "audio_step_6_title": "Restart Phone & Device",
+  "audio_step_6_desc": "Restart both your phone and the Bluetooth audio device.",
+
+  "audio_step_7_title": "Check Battery Level",
+  "audio_step_7_desc": "Low battery can cause unstable or no audio connection.",
+
+  "audio_step_8_title": "Disable Other Bluetooth Devices",
+  "audio_step_8_desc": "Turn off other connected Bluetooth devices that may conflict.",
+
+  "audio_got_it_button": "Got it"
+}
+ LessonTroubleShoot  {
+  "help_support_title": "Help & Support",
+
+  "lesson_troubleshoot_title": "Lesson Troubleshooting Steps",
+
+  "lesson_step_1_title": "Check Your Internet Connection",
+  "lesson_step_1_desc": "Ensure you have a stable Wi-Fi or mobile data connection.",
+
+  "lesson_step_2_title": "Refresh the App",
+  "lesson_step_2_desc": "Close the app completely and reopen it to reload the schedule.",
+
+  "lesson_step_3_title": "Verify Scheduled Time",
+  "lesson_step_3_desc": "Check that the lesson time and your device time match correctly.",
+
+  "lesson_step_4_title": "Sync Device Time",
+  "lesson_step_4_desc": "Turn on automatic date and time in your phone settings.",
+
+  "lesson_step_5_title": "Restart the App or Device",
+  "lesson_step_5_desc": "Restart your app or phone if the lesson is still not starting.",
+
+  "lesson_got_it_button": "Got it"
+}
+ EmailSupportScreen  {
+  "help_support_title": "Help & Support",
+
+  "email_support_title": "Contact Support",
+
+  "email_support_description": "If you're facing any issues, our support team is here to help you. Please send us an email with your issue details.",
+
+  "email_support_label": "Email us at:",
+
+  "email_support_include_title": "Please include:",
+
+  "email_support_include_points": "• Your registered email\n• Description of the issue\n• Screenshots (if any)\n• Your device (Android / iOS)",
+
+  "email_support_button": "Email Support",
+
+  "email_support_subject": "Support Needed",
+
+  "email_support_body_intro": "Hello Support Team,",
+
+  "email_support_body_help": "Please help me with the following issue:",
+
+  "email_support_body_device": "Device:",
+
+  "email_support_body_issue": "Issue Details:"
+}
+  LanguageToggleScreen  {
+  "language_toggle_title": "Language Toggle",
+
+  "language_default_title": "Default Language",
+  "language_default_label": "English",
+
+  "language_select_title": "Select Language",
+
+  "language_option_hausa": "Hausa",
+  "language_option_english": "English",
+  "language_option_yoruba": "Yoruba",
+  "language_option_igbo": "Igbo",
+
+  "language_sample_title": "BABY SHARK",
+  "language_sample_subtitle": "WB Kids",
+  "language_play_sample": "PLAY SAMPLE",
+
+  "language_updating_text": "Updating language...",
+
+  "language_save_button": "Save",
+  "language_saving_button": "Saving...",
+
+  "language_success_title": "Success",
+  "language_success_message": "Language preference updated successfully",
+
+  "language_error_title": "Error",
+  "language_error_no_token": "No valid token found. Please login again.",
+
+  "language_sample_alert_title": "Play Sample",
+  "language_sample_alert_message": "Playing sample in {{language}}"
+}
+ TermsAndConditionsScreen  {
+  "tnc_tab_terms":"Terms of Use",
+  "tnc_tab_privacy":"Privacy Policy",
+  "tnc_header_terms":"T&C",
+  "tnc_header_privacy":"Privacy",
+  "tnc_loading_terms":"Loading Terms & Conditions...",
+  "tnc_loading_privacy":"Loading Privacy Policy...",
+  "tnc_error_terms":"Failed to load terms and conditions",
+  "tnc_error_privacy":"Failed to load privacy policy",
+  "tnc_try_again":"Try Again",
+  "tnc_title_terms":"Terms of Service",
+  "tnc_title_privacy":"Privacy Policy",
+  "tnc_last_updated":"Last updated on {{date}}",
+  "tnc_no_content":"No content available at the moment.",
+  "tnc_accept_continue":"Accept & Continue",
+  "tnc_acknowledge":"Acknowledge",
+  "tnc_scroll_top":"Scroll to Top",
+  "tnc_success_terms":"Terms accepted successfully",
+  "tnc_success_privacy":"Privacy policy acknowledged",
+  "tnc_error_generic":"Failed to process your request"
+}
+ NotificationSettingsScreen  {
+  "settings_title":"Settings",
+  "settings_help_support":"Help and Support",
+  "settings_language":"Language Settings",
+  "settings_privacy":"Privacy Settings",
+  "settings_configure_notifications":"Configure All Notifications",
+  "settings_configure_notifications_desc":"Silent mode, sound, alerts categories, connection times",
+  "settings_notification_summary":"Notification Summary",
+  "settings_silent_mode":"Silent Mode",
+  "settings_sound":"Sound",
+  "settings_active_alerts":"Active Alerts",
+  "settings_connection_time":"Connection Time",
+  "settings_on":"ON",
+  "settings_off":"OFF",
+  "settings_clear_cache":"Clear Local Cache/Data",
+  "settings_clearing_cache":"Clearing Cache...",
+  "settings_clear_cache_title":"Clear Local Cache",
+  "settings_clear_cache_message":"This will remove all locally stored data including settings and cached content. This action cannot be undone.",
+  "settings_cancel":"Cancel",
+  "settings_clear":"Clear Cache",
+  "settings_clear_success":"Local cache cleared successfully",
+  "settings_clear_failed":"Failed to clear local cache",
+  "settings_logout":"Logout",
+  "settings_logging_out":"Logging out...",
+  "settings_logout_confirm_title":"Are you sure?",
+  "settings_logout_confirm_message":"This action will log you out of your account. You will need to log in again to access your data.",
+  "settings_logout_success":"Logged out successfully",
+  "settings_logout_failed":"Logout failed. Please try again.",
+  "settings_logout_network":"No internet connection. Logged out locally.",
+  "settings_logout_session_expired":"Session expired. Logged out.",
+  "settings_logout_local":"Logged out locally due to network error"
+}
+  UserNotification  {
+  // User Notification Settings
+  "notification_settings_title": "Notification Settings",
+
+  "notification_enable_all_title": "Enable All Notifications",
+  "notification_enable_all_desc": "Master switch for all notification settings",
+
+  "notification_alert_categories_title": "Alert Categories",
+  "notification_alert_categories_desc_on": "Customize which notifications you want to receive",
+  "notification_alert_categories_desc_off": "Turn on \"Enable All Notifications\" to customize categories",
+
+  "notification_lesson_reminder_title": "Lesson start reminders",
+  "notification_lesson_reminder_desc": "Get notified before lessons start",
+
+  "notification_new_content_title": "New story/content available",
+  "notification_new_content_desc": "Get notified about new content",
+
+  "notification_system_updates_title": "System announcements or updates",
+  "notification_system_updates_desc": "Important system updates and announcements",
+
+  "notification_promotional_title": "Promotional or special feature alerts",
+  "notification_promotional_desc": "Offers and new feature announcements",
+
+  "notification_quiet_hours_title": "Quiet Hours",
+  "notification_quiet_hours_desc_on": "Set when you don't want to receive notifications",
+  "notification_quiet_hours_desc_off": "Enable notifications to set quiet hours",
+
+  "notification_quiet_start_time": "Start Time",
+  "notification_quiet_start_desc": "When to start receiving notifications",
+
+  "notification_quiet_end_time": "End Time",
+  "notification_quiet_end_desc": "When to stop receiving notifications",
+
+  "notification_save_button": "Save Settings",
+  "notification_saving_button": "Saving...",
+
+  "notification_turn_off_title": "Turn Off All Notifications?",
+  "notification_turn_off_message": "This will disable all notification categories. You can enable them individually later.",
+  "notification_turn_off_confirm": "Turn Off",
+  "notification_cancel": "Cancel",
+
+  "notification_update_success": "Notification settings updated successfully!",
+  "notification_update_failed": "Failed to update notification settings. Please try again.",
+  "notification_network_error": "Network error. Please check your connection and try again.",
+
+  // Time Edit Modal
+  "notification_edit_time_title": "Edit Time",
+  "notification_time_hour_placeholder": "HH",
+  "notification_time_minute_placeholder": "MM",
+  "notification_time_am": "AM",
+  "notification_time_pm": "PM",
+  "notification_time_save": "Save",
+  "notification_time_cancel": "Cancel",
+
+  // Validation
+  "notification_invalid_time_title": "Invalid time",
+  "notification_invalid_time_message": "Please enter valid hour and minute values"
+}
+ AuthenticationHeaderProps  {
+  // Authentication Header
+  "auth_header_back": "Back",
+  "auth_header_done": "Done"
+}
+  Child Bluetooth  {
+  // Permissions & Bluetooth
+  "ble_permission_error": "Permission error",
+  "ble_bluetooth_disabled_title": "Bluetooth Disabled",
+  "ble_bluetooth_disabled_msg": "Please enable Bluetooth to connect to DARA Smart Doll",
+  "ble_bluetooth_off_title": "Bluetooth Off",
+  "ble_bluetooth_off_msg": "Please enable Bluetooth first",
+  "ble_settings": "Settings",
+  "ble_cancel": "Cancel",
+
+  // Scan & Connection
+  "ble_connecting": "Connecting...",
+  "ble_connected_success_title": "Connected Successfully",
+  "ble_connected_success_msg": "Connected to {{device}}",
+  "ble_connection_failed_title": "Connection Failed",
+  "ble_connection_failed_msg": "Failed to connect",
+  "ble_disconnected_title": "Disconnected",
+  "ble_disconnected_msg": "Device disconnected successfully",
+
+  // Errors
+  "ble_error": "Error",
+  "ble_no_device_connected": "No device connected",
+  "ble_doll_not_connected": "Doll not connected",
+  "ble_playback_command_failed": "Failed to send command",
+
+  // Connection Status Text
+  "ble_status_ready": "Ready",
+  "ble_status_connecting": "Connecting...",
+  "ble_status_connected": "Connected",
+  "ble_status_playing": "Playing Content",
+  "ble_status_listening": "Listening",
+  "ble_status_processing": "AI Processing",
+  "ble_status_low_battery": "Low Battery",
+  "ble_status_charging": "Charging",
+  "ble_status_unknown": "Unknown",
+
+  // Device Types
+  "ble_device_dara": "DARA Smart Doll",
+  "ble_device_other": "Other Device",
+
+  // Content Sync
+  "ble_content_download_completed": "Content download completed",
+
+  // Alerts (generic)
+  "ble_ok": "OK"
+}
+  ChildBottomBar  {
+  "child_bottom_bar_home": "Home",
+  "child_bottom_bar_dara": "Dara",
+  "child_bottom_bar_playlists": "Playlists",
+  "child_bottom_bar_profile": "Profile",
+  "child_bottom_bar_mic": "Mic"
+}
+  CongratsModal   {
+  "congrats_modal_title": "Congrats!",
+  "congrats_modal_message": "You have earned {{count}} stars. Session completed.",
+  "congrats_modal_close": "Close",
+  "congrats_modal_accessibility_close": "Close modal"
+}
+ ConnectedCard  {
+  "connected_card_status_label": "Status",
+  "connected_card_status_connected": "Connected",
+  "connected_card_status_not_connected": "Not Connected",
+  "connected_card_battery_icon": "Battery",
+  "connected_card_signal_icon": "Signal",
+  "connected_card_connected_to": "Connected to:",
+  "connected_card_device_name_placeholder": "Amina Doll - 02",
+  "connected_card_action_paired": "Paired",
+  "connected_card_action_pair": "Pair",
+  "connected_card_action_unpair": "Unpair"
+}
+  CountryCustomTextInputProps   {
+  "country_input_title": "Phone Number",
+  "country_input_required_symbol": "*",
+  "country_input_placeholder": "Enter phone number",
+  "country_input_default_country": "🇮🇳 +91",
+  "country_input_error_invalid": "Invalid phone number",
+  "country_input_error_required": "Phone number is required",
+  "country_input_action_show_password": "Show password",
+  "country_input_action_hide_password": "Hide password",
+  "country_input_accessibility_country_selector": "Select country code",
+  "country_input_accessibility_text_input": "Phone number input"
+}
+ CustomBottomBar child   {
+  "bottom_bar_home": "Home",
+  "bottom_bar_dara": "Dara",
+  "bottom_bar_subscription": "Subscription",
+  "bottom_bar_profile": "Profile",
+  "bottom_bar_mic": "Voice"
+}
+  CustomDateTimePicker  {
+  "date_picker_title": "Date",
+  "date_picker_placeholder": "Select Date",
+  "date_picker_error_required": "Date is required",
+  "date_picker_error_invalid": "Invalid date selected",
+  "date_picker_mode_date": "Date",
+  "date_picker_mode_time": "Time",
+  "date_picker_mode_datetime": "Date & Time"
+}
+  CustomDropdown  {
+  "dropdown_placeholder_select": "Select option",
+  "dropdown_search_placeholder": "Search",
+  "dropdown_error_required": "This field is required",
+  "dropdown_error_invalid": "Invalid selection",
+  "dropdown_multi_selected_label": "Selected",
+  "dropdown_no_data": "No options available"
+}
+  CustomHeaderProps child   {
+  "header_back": "Back",
+  "header_done": "Done",
+
+  "header_greeting_hi": "Hi",
+  "header_default_username": "Zery",
+
+  "header_search_placeholder": "Search",
+
+  "header_notifications": "Notifications",
+  "header_settings": "Settings",
+  "header_download": "Download",
+
+  "header_profile": "Profile",
+
+  "header_dropdown_select_child": "Select child",
+
+  "header_badge_more": "9+",
+
+  "header_dashboard_title": "Dashboard",
+  "header_subscription_title": "Subscription",
+  "header_profile_title": "Profile",
+
+  "header_search_tap": "Tap to search"
+}
+  CustomHomeHeader   {
+  "home_header_back": "Back",
+
+  "home_header_search_placeholder": "Search",
+
+  "home_header_default_username": "Carlos",
+
+  "home_header_dropdown_open": "Open profile menu",
+  "home_header_dropdown_close": "Close profile menu",
+
+  "home_header_select_profile": "Select profile"
+}
+  CustomImageAvatarPopUpProps  {
+  "image_avatar_popup_title": "Choose Image Source",
+
+  "image_avatar_popup_option_avatar": "Avatar",
+  "image_avatar_popup_option_gallery": "From Gallery",
+
+  "image_avatar_popup_confirm_button": "Confirm"
+}
+  CustomImagePicker  {
+  "image_picker_title": "Upload Image",
+  "image_picker_placeholder": "Select image",
+  "image_picker_icon_upload": "Upload"
+}
+  CustomTextInputProps  {
+  "input_title": "Title",
+  "input_placeholder": "Enter value",
+  "input_error_required": "This field is required",
+  "input_error_invalid": "Invalid input",
+  "input_show_password": "Show password",
+  "input_hide_password": "Hide password"
+}
+  DeleteModalProps  {
+  "delete_modal": {
+    "title": "Delete?",
+    "subtitle": "This action cannot be undone.",
+    "delete_button": "Delete",
+    "cancel_button": "Cancel",
+    "loading": "Deleting...",
+    "icon_warning": "Warning"
+  }
+}
+  PaymentStatusModal  {
+  "input_placeholder": "Enter value",
+  "input_error_required": "This field is required",
+  "input_error_invalid": "Invalid input",
+  "input_show_password": "Show password",
+  "input_hide_password": "Hide password",
+
+  "delete_modal_subtitle": "This action cannot be undone.",
+  "delete_modal_delete_button": "Delete",
+  "delete_modal_cancel_button": "Cancel",
+  "delete_modal_loading": "Deleting...",
+  "delete_modal_icon_warning": "Warning"
+}
+ Popup  {
+  "popup_logout_title": "Are you sure you want to logout?",
+  "popup_logout_subtitle": "Only use this feature if you would like your account deleted or data removed?",
+  "popup_logout_cancel": "Cancel",
+  "popup_logout_submit": "Submit",
+
+  "popup_delete_title": "This action is permanent and cannot be undone later",
+  "popup_delete_subtitle": "Note: This will erase all your data. This may take up to 7 days.",
+  "popup_delete_confirm_text": "Are you sure?",
+  "popup_delete_no": "No",
+  "popup_delete_yes": "Yes"
+}
+  AddAvatar  {
+  "add_avatar_title": "Set Your Avatar",
+
+  "add_avatar_existing_profile_name": "Kids",
+  "add_avatar_new_profile_name": "New",
+
+  "add_avatar_edit_profile_button": "Edit Profile",
+  "add_avatar_learn_more_button": "Learn More"
+}
+ CartoonVideoScreen  {
+  "cartoon_loading_content": "Loading content...",
+  "cartoon_loading_audio": "Loading audio...",
+
+  "cartoon_no_content_found": "No content found",
+  "cartoon_retry": "Retry",
+
+  "cartoon_no_thumbnail": "No Thumbnail",
+
+  "cartoon_audio_label": "Audio",
+
+  "cartoon_favorite": "FAVORITE",
+
+  "cartoon_audio_playing": "Playing",
+  "cartoon_audio_paused": "Paused",
+
+  "cartoon_error_title": "Error",
+  "cartoon_error_audio_load": "Failed to load audio",
+  "cartoon_error_network": "Network error occurred",
+  "cartoon_error_fetch": "Failed to fetch content data",
+
+  "cartoon_default_title": "Untitled",
+  "cartoon_default_description": "No description available"
+}
+  AudioPlayerScreen  {
+  "audio_player_download_first": "Please download content first",
+  "audio_player_not_connected": "DARA Not Connected",
+
+  "audio_player_downloading_title": "Downloading",
+  "audio_player_downloading_message": "Content download started. You can play after it completes.",
+
+  "audio_player_download_button": "Download to Doll",
+  "audio_player_stop_button": "Stop",
+
+  "audio_player_play": "Play",
+  "audio_player_pause": "Pause"
+}
+  ChildProfile  {
+  "child_profile_title_name": "Profile name",
+
+  "child_profile_display_language": "Display Language",
+
+  "child_profile_autoplay_next": "Autoplay Next Episode",
+  "child_profile_autoplay_preview": "Autoplay Previews",
+
+  "child_profile_theme_light": "Light Mode",
+  "child_profile_theme_dark": "Dark Mode",
+  "child_profile_theme_custom": "Custom Mode",
+
+  "child_profile_logout": "Logout",
+
+  "child_profile_logout_confirm_title": "Are you sure?",
+  "child_profile_logout_confirm_desc": "This action will log you out of your account. You will need to log in again to access your data and continue using the app.",
+
+  "child_profile_logout_button": "Logout",
+  "child_profile_logout_loading": "Logging out...",
+  "child_profile_cancel_button": "Cancel",
+
+  "child_profile_theme_updated": "Theme preference updated",
+  "child_profile_theme_update_failed": "Failed to update theme preference",
+  "child_profile_request_failed": "Request failed. Please try again."
+}
+  ChildWhoiswtching   {
+  "child_who_watching_back": "Back",
+
+  "child_who_watching_title": "Who’s watching?",
+
+  "child_who_watching_edit_profile": "Edit Profile",
+  "child_who_watching_learn_more": "Learn More"
+}
+  ChooseIconScreen  {
+  "choose_icon_title": "Choose Icon",
+  "choose_icon_subtitle": "Who's watching?"
+}
+  DollScreen  {
+  "greeting_hi": "Hi",
+  "default_user_name": "Zery",
+  "search_placeholder": "Search",
+  "doll_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  "mic_button_action": "Speak"
+}
+  EditAvatar  {
+  "edit_avatar_title": "Set your Avatar",
+  "avatar_edit_action": "Edit Avatar",
+  "avatar_name_carlos": "Carlos Carlton",
+  "avatar_name_emily": "Emily Jack",
+  "avatar_name_kids": "Kids",
+  "avatar_name_jennifer": "Jennifer"
+}
+  FavouriteChannel  {
+  "favourite_channel_header_title": "Favorite Channel",
+
+  "view_all_button": "View All",
+
+  "no_videos_in_category": "No videos in this category",
+
+  "empty_favourite_title": "No favorite channels available",
+  "empty_favourite_with_child": "No favorite channels available for {{childName}}",
+  "empty_favourite_default_child": "this child",
+
+  "loading_favourite_channels": "Loading favorite channels..."
+}
+ ContentListScreen  {
+  "content_list_play_icon_label": "Play",
+
+  "content_list_favorite_add": "Add to favorites",
+  "content_list_favorite_remove": "Remove from favorites",
+
+  "content_list_empty_title": "No content available",
+  "content_list_empty_description": "There is no content available for this category.",
+
+  "content_list_error_fetch": "Failed to load content",
+  "content_list_error_favorite": "Failed to update favorite status"
+}
+  SearchScreen  {
+  "search_header_title": "Search",
+
+  "search_input_placeholder": "Search categories...",
+
+  "search_category_untitled": "Untitled Category",
+  "search_category_no_description": "No description available",
+
+  "search_empty_title": "No categories found",
+  "search_empty_description": "Try searching with a different keyword.",
+
+  "search_loading": "Loading categories...",
+  "search_error_fetch": "Failed to load categories"
+}
+ AsyncStorage  {
+  "storage_store_success": "Data stored successfully",
+  "storage_store_error": "Error storing data",
+
+  "storage_get_error": "Error getting data",
+
+  "storage_remove_success": "Data removed successfully",
+  "storage_remove_error": "Error removing data",
+
+  "storage_clear_success": "All local data cleared",
+  "storage_clear_error": "Error clearing local data"
+}
+  CustomLoader  {
+  "loader_loading": "Loading...",
+  "loader_fetching_data": "Fetching your data...",
+  "loader_just_a_moment": "Just a moment...",
+  "loader_almost_there": "Almost there..."
+}
+  showSuccessToast  {
+  "toast_success_title": "Success",
+  "toast_error_title": "Error",
+
+  "toast_visibility_time": "3000",
+
+  "toast_generic_success": "Operation completed successfully",
+  "toast_generic_error": "Something went wrong"
+}
+ requestNotificationPermission  {
+  "notification_channel_id": "fsl",
+  "notification_channel_name": "FCM Notifications",
+  "notification_channel_description": "Channel for Firebase Cloud Messages",
+
+  "notification_permission_android_granted": "Notification permission granted",
+  "notification_permission_android_denied": "Notification permission denied",
+  "notification_permission_android_not_required": "Notification permission not required",
+
+  "notification_permission_ios_granted": "Notification permission granted",
+  "notification_permission_ios_denied": "Notification permission denied",
+
+  "notification_title_default": "New Notification",
+  "notification_body_empty": "",
+
+  "notification_log_background": "Background notification received",
+  "notification_log_foreground": "Foreground notification received",
+  "notification_log_opened": "Notification opened",
+  "notification_log_initial": "App launched from notification",
+
+  "notification_fcm_token_error": "Error generating FCM token"
+}
+  CustomToast  {
+  "toast_success_title": "Success",
+  "toast_error_title": "Error",
+
+  "toast_success_default_message": "Action completed successfully",
+  "toast_error_default_message": "Something went wrong",
+
+  "toast_network_error": "Network error. Please try again",
+  "toast_server_error": "Server error. Please try later",
+  "toast_validation_error": "Please check the entered details",
+
+  "toast_saved_success": "Data saved successfully",
+  "toast_deleted_success": "Deleted successfully",
+  "toast_updated_success": "Updated successfully",
+
+  "toast_permission_denied": "Permission denied",
+  "toast_unauthorized": "You are not authorized"
+}
+ NetInfo  {
+  "network_online": "You are back online",
+  "network_offline": "No internet connection",
+
+  "network_checking": "Checking network connection...",
+  "network_retrying": "Retrying failed requests...",
+
+  "network_error_generic": "Network error occurred",
+  "network_error_timeout": "Request timed out. Please try again",
+  "network_error_no_internet": "Please check your internet connection",
+
+  "network_restored_success": "Connection restored successfully",
+  "network_retry_failed": "Retry failed. Please try again later"
+}
+ openVideo_Picker  {
+  "media_picker_opening": "Opening media picker...",
+  "media_picker_cancelled": "Media selection cancelled",
+  "media_picker_error": "Unable to open media picker",
+
+  "image_picker_opening": "Opening image picker...",
+  "image_selected_success": "Image selected successfully",
+  "image_crop_error": "Image cropping failed",
+
+  "video_picker_opening": "Opening video picker...",
+  "video_selected_success": "Video selected successfully",
+  "video_duration_label": "Duration",
+  "video_size_label": "Size",
+  "video_too_large": "Selected video size is too large",
+  "video_invalid_format": "Invalid video format",
+
+  "camera_opening": "Opening camera...",
+  "camera_permission_denied": "Camera permission denied",
+  "camera_capture_success": "Video captured successfully",
+  "camera_error": "Unable to access camera",
+
+  "time_just_now": "Just now",
+  "time_minutes_ago": "{{minutes}} minutes ago",
+  "time_hours_ago": "{{hours}} hours ago",
+
+  "common_try_again": "Please try again",
+  "common_unknown_error": "Something went wrong"
+}
+  SuccessErrorPopupProps  {
+  "popup_success_title": "SUCCESS",
+  "popup_error_title": "ERROR",
+
+  "popup_success_message_default": "Operation completed successfully",
+  "popup_error_message_default": "Something went wrong",
+
+  "popup_success_button_continue": "Continue",
+  "popup_error_button_retry": "Try Again",
+
+  "popup_close": "Close",
+
+  "popup_success_access_granted": "Access granted successfully",
+  "popup_success_saved": "Your changes have been saved",
+
+  "popup_error_network": "Network error. Please check your connection",
+  "popup_error_server": "Server error. Please try again later",
+  "popup_error_unknown": "Unexpected error occurred"
+}
+  IntroSwiper  {
+  "intro_slide_1_title": "Learn Through Play",
+  "intro_slide_1_description": "Meet our interactive, culturally-themed dolls that brings stories and lessons to life.",
+
+  "intro_slide_2_title": "Smart Learning\nExperience",
+  "intro_slide_2_description": "Meet our interactive, culturally-themed dolls that brings stories and lessons to life.",
+
+  "intro_slide_3_title": "Parental Control",
+  "intro_slide_3_description": "Meet our interactive, culturally-themed dolls that brings stories and lessons to life.",
+
+  "intro_slide_4_title": "Earn Rewards",
+  "intro_slide_4_description": "Master your challenges, embrace simplicity,\nand enjoy a fulfilling life.",
+
+  "intro_next_button": "Next",
+  "intro_get_started_button": "Get Started",
+  "intro_skip_button": "Skip"
+}
+ 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840683443185",
+    "project_id": "dara-buddy",
+    "storage_bucket": "dara-buddy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840683443185:android:235c396185d8eef2bb6a50",
+        "android_client_info": {
+          "package_name": "com.dara"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbKkrQOm988gx30xvdjFotAExMgBhKtDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
