@@ -12,15 +12,6 @@ on:
         - debug
         - release
 
-env:
-  # React Native and Android configuration
-  ANDROID_COMPILE_SDK: 36
-  ANDROID_TARGET_SDK: 36
-  ANDROID_MIN_SDK: 24
-  NDK_VERSION: 27.0.12077973
-  JAVA_VERSION: 17
-  NODE_VERSION: 18
-
 jobs:
   build:
     name: Build APK
@@ -34,17 +25,17 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '18'
         cache: 'npm'
 
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: ${{ env.JAVA_VERSION }}
+        java-version: '17'
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
+      uses: android-actions/setup-android@v2
 
     - name: Cache Gradle
       uses: actions/cache@v4
