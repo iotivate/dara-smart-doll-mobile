@@ -213,7 +213,7 @@ jobs:
 
           echo "💥 Performing second nuclear build attempt..."
 
-          # Attempt 2: Second build try with even more aggressive settings
+          # Attempt 2: Second build try with valid aggressive settings
           if timeout 50m ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
             --no-daemon \
             --max-workers=1 \
@@ -221,7 +221,6 @@ jobs:
             --stacktrace \
             --no-build-cache \
             --refresh-dependencies \
-            --recompile-scripts \
             --rerun-tasks \
             -Dorg.gradle.jvmargs="-Xmx7g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC" \
             -Dorg.gradle.workers.max=1 \
