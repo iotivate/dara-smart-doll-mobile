@@ -45,7 +45,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
+        cache: 'yarn'
 
     - name: Setup Java
       uses: actions/setup-java@v4
@@ -71,16 +71,18 @@ jobs:
         restore-keys: |
           gradle-${{ runner.os }}-
 
-    - name: Cache NPM Dependencies
+    - name: Cache Yarn Dependencies
       uses: actions/cache@v4
       with:
-        path: ~/.npm
-        key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+        path: |
+          ~/.yarn
+          .yarn/cache
+        key: yarn-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
-          npm-${{ runner.os }}-
+          yarn-${{ runner.os }}-
 
-    - name: Install NPM Dependencies
-      run: npm ci --legacy-peer-deps
+    - name: Install Dependencies
+      run: yarn install --frozen-lockfile
 
     - name: Verify Android Components Installation
       run: |
