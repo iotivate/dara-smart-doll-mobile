@@ -54,9 +54,14 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       with:
-        api-level: 36
-        build-tools: 36.0.0
-        ndk-version: 27.0.12077973
+        cmdline-tools-version: latest
+        accept-android-sdk-licenses: true
+        packages: |
+          platforms;android-36
+          build-tools;36.0.0
+          ndk;27.0.12077973
+          cmake;3.22.1
+          platform-tools
 
     - name: Cache Gradle
       uses: actions/cache@v4
@@ -80,24 +85,28 @@ jobs:
     - name: Install NPM Dependencies
       run: npm ci --legacy-peer-deps
 
-    - name: Install Specific Android Components
+    - name: Verify Android Components Installation
       run: |
-        echo "Installing specific Android SDK components..."
+        echo "Verifying Android SDK components installation..."
 
-        # Update SDK manager
-        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --update
+        # Check if components were installed by setup-android action
+        if [ ! -d "$ANDROID_HOME/platforms/android-36" ] || [ ! -d "$ANDROID_HOME/ndk/27.0.12077973" ]; then
+          echo "Missing components detected, installing manually..."
 
-        # Install specific components required by this project
-        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
-          "platforms;android-36" \
-          "build-tools;36.0.0" \
-          "ndk;27.0.12077973" \
-          "cmake;3.22.1" \
-          "platform-tools" \
-          --verbose
+          # Update SDK manager
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --update
 
-        # Accept all licenses
-        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          # Install missing components
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            "platforms;android-36" \
+            "build-tools;36.0.0" \
+            "ndk;27.0.12077973" \
+            "cmake;3.22.1" \
+            "platform-tools" \
+            --verbose
+        else
+          echo "✅ All required components already installed by setup-android action"
+        fi
 
     - name: Validate Android Environment
       run: |
