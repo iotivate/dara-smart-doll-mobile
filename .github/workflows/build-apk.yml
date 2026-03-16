@@ -82,7 +82,7 @@ jobs:
           yarn-${{ runner.os }}-
 
     - name: Install Dependencies
-      run: yarn install --frozen-lockfile
+      run: yarn install
 
     - name: Verify Android Components Installation
       run: |
