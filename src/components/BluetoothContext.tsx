@@ -135,24 +135,49 @@ export const BluetoothProvider = ({ children }: any) => {
     downloaded: 0, // Added missing field per hardware guide
     error: null,
   });
+  /**
+   * CRITICAL BLE FUNCTION: Safely enable notifications for a BLE characteristic
+   *
+   * This function implements the HARDWARE-REQUIRED CCCD (Client Characteristic
+   * Configuration Descriptor) enablement that was missing in the original implementation.
+   *
+   * WHY THIS IS CRITICAL:
+   * - Dara Smart Doll hardware REQUIRES CCCD enablement before notifications work
+   * - Without this, the doll appears connected but NEVER sends any data
+   * - This follows Bluetooth Low Energy specification requirements
+   * - The hardware guide v2.0 specifically mandates this implementation
+   *
+   * IMPLEMENTATION DETAILS:
+   * - CCCD UUID is standard: '00002902-0000-1000-8000-00805f9b34fb'
+   * - Enable value is [0x01, 0x00] meaning "enable notifications"
+   * - Must be called BEFORE monitorCharacteristicForService()
+   * - Includes duplicate monitoring prevention
+   *
+   * @param device - The connected BLE device
+   * @param serviceUUID - The service UUID containing the characteristic
+   * @param charUUID - The characteristic UUID to enable notifications for
+   * @param callback - Function to handle incoming notification data
+   */
   const enableNotifySafe = async (
     device: any,
     serviceUUID: any,
     charUUID: any,
     callback: any,
   ) => {
+    // Create unique key to prevent duplicate monitoring
     const key = `${serviceUUID}:${charUUID}`;
     if (activeMonitors.current.has(key)) {
+      console.log('[BLE] Already monitoring', charUUID, '- skipping duplicate');
       return;
     }
 
     try {
-      // CRITICAL FIX: Write to CCCD descriptor to enable notifications
-      // This is required by the hardware guide and was completely missing
-      const CCCD_UUID = '00002902-0000-1000-8000-00805f9b34fb';
-      const enableNotificationValue = encodeToBase64([0x01, 0x00]);
+      // CRITICAL STEP 1: Write to CCCD descriptor to enable notifications
+      // This is what was missing and causing the "connected but no data" issue
+      const CCCD_UUID = '00002902-0000-1000-8000-00805f9b34fb'; // Standard CCCD UUID
+      const enableNotificationValue = encodeToBase64([0x01, 0x00]); // Enable notifications
 
-      console.log('[BLE] Writing CCCD for', charUUID);
+      console.log('[BLE] 🔧 Writing CCCD for characteristic:', charUUID);
       await device.writeDescriptorForCharacteristic(
         serviceUUID,
         charUUID,
@@ -160,23 +185,58 @@ export const BluetoothProvider = ({ children }: any) => {
         enableNotificationValue,
       );
 
-      console.log('[BLE] CCCD write successful for', charUUID);
+      console.log('[BLE] ✅ CCCD write successful for:', charUUID);
 
-      // Now monitor the characteristic
+      // CRITICAL STEP 2: ONLY NOW start monitoring the characteristic
+      // The hardware will now send notifications because CCCD is enabled
       const subscription = device.monitorCharacteristicForService(
         serviceUUID,
         charUUID,
         callback,
       );
 
+      // Track active monitors to prevent duplicates and enable cleanup
       activeMonitors.current.add(key);
       monitorSubscriptions.current.push(subscription);
 
-      console.log('[BLE] Notify enabled for', charUUID);
+      console.log('[BLE] 📡 Notification monitoring enabled for:', charUUID);
     } catch (e) {
-      console.log('[BLE] Notify failed for', charUUID, e);
-      // Try without CCCD write as fallback
+      console.error('[BLE] ❌ Failed to enable notifications for', charUUID, ':', e);
+
+      // ENHANCED ERROR HANDLING: Try multiple recovery strategies
+
+      // Strategy 1: Retry CCCD write with small delay
       try {
+        console.log('[BLE] 🔄 Retrying CCCD write after 500ms delay...');
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        const CCCD_UUID = '00002902-0000-1000-8000-00805f9b34fb';
+        const enableNotificationValue = encodeToBase64([0x01, 0x00]);
+
+        await device.writeDescriptorForCharacteristic(
+          serviceUUID,
+          charUUID,
+          CCCD_UUID,
+          enableNotificationValue,
+        );
+
+        const subscription = device.monitorCharacteristicForService(
+          serviceUUID,
+          charUUID,
+          callback,
+        );
+
+        activeMonitors.current.add(key);
+        monitorSubscriptions.current.push(subscription);
+        console.log('[BLE] ✅ Retry successful for', charUUID);
+        return; // Success, exit early
+      } catch (retryError) {
+        console.warn('[BLE] ⚠️ Retry failed, trying fallback for', charUUID, ':', retryError);
+      }
+
+      // Strategy 2: Try without CCCD write as fallback
+      try {
+        console.log('[BLE] 🔄 Attempting fallback without CCCD...');
         const subscription = device.monitorCharacteristicForService(
           serviceUUID,
           charUUID,
@@ -184,9 +244,10 @@ export const BluetoothProvider = ({ children }: any) => {
         );
         activeMonitors.current.add(key);
         monitorSubscriptions.current.push(subscription);
-        console.log('[BLE] Fallback notify enabled for', charUUID);
+        console.log('[BLE] ⚠️ Fallback notify enabled for', charUUID, '(may not receive data)');
       } catch (fallbackError) {
-        console.log('[BLE] Fallback notify also failed for', charUUID, fallbackError);
+        console.error('[BLE] 💥 All strategies failed for', charUUID, ':', fallbackError);
+        // Don't throw - continue with other characteristics
       }
     }
   };

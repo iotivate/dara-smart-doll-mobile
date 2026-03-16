@@ -1,3 +1,20 @@
+# ENHANCED GITHUB ACTIONS WORKFLOW FOR DARA SMART DOLL
+#
+# This workflow handles the complex build requirements of the Dara Smart Doll project:
+# - React Native 0.81.4 with New Architecture enabled
+# - 30+ native modules including BLE, Firebase, 3D rendering
+# - Specific Android SDK requirements (API 36, NDK 27.0.12077973)
+# - Enhanced memory and build configurations for CI environment
+#
+# Issues fixed:
+# - Specific Android SDK/NDK version installation
+# - Enhanced memory allocation for complex native modules
+# - Proper environment variables for New Architecture
+# - Extended timeout for complex builds
+#
+# Author: Hardware BLE Expert + CI Configuration
+# Date: 2026-03-16
+
 name: Build React Native APK
 
 on:
@@ -16,7 +33,7 @@ jobs:
   build:
     name: Build APK
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
     - name: Checkout Repository
@@ -35,7 +52,11 @@ jobs:
         java-version: '17'
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
+      uses: android-actions/setup-android@v3
+      with:
+        api-level: 36
+        build-tools: 36.0.0
+        ndk-version: 27.0.12077973
 
     - name: Cache Gradle
       uses: actions/cache@v4
@@ -59,14 +80,49 @@ jobs:
     - name: Install NPM Dependencies
       run: npm ci --legacy-peer-deps
 
+    - name: Install Specific Android Components
+      run: |
+        echo "Installing specific Android SDK components..."
+
+        # Update SDK manager
+        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --update
+
+        # Install specific components required by this project
+        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+          "platforms;android-36" \
+          "build-tools;36.0.0" \
+          "ndk;27.0.12077973" \
+          "cmake;3.22.1" \
+          "platform-tools" \
+          --verbose
+
+        # Accept all licenses
+        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+
     - name: Validate Android Environment
       run: |
-        echo "Java Version:"
+        echo "=== Java Version ==="
         java -version
-        echo "Android SDK:"
-        $ANDROID_HOME/tools/bin/sdkmanager --list | grep "build-tools\|platforms" | head -10
-        echo "NDK Version:"
+
+        echo "=== Android SDK Location ==="
+        echo "ANDROID_HOME: $ANDROID_HOME"
+
+        echo "=== Installed Platforms ==="
+        ls -la $ANDROID_HOME/platforms/ || echo "Platforms directory not found"
+
+        echo "=== Installed Build Tools ==="
+        ls -la $ANDROID_HOME/build-tools/ || echo "Build tools directory not found"
+
+        echo "=== NDK Version ==="
         ls -la $ANDROID_HOME/ndk/ || echo "NDK directory not found"
+        if [ -d "$ANDROID_HOME/ndk/27.0.12077973" ]; then
+          echo "✅ NDK 27.0.12077973 found"
+        else
+          echo "❌ NDK 27.0.12077973 not found"
+        fi
+
+        echo "=== SDK Manager List (Build Tools & Platforms) ==="
+        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list | grep -E "build-tools|platforms" | head -15
 
     - name: Make Gradlew Executable
       run: chmod +x android/gradlew
@@ -76,17 +132,84 @@ jobs:
         cd android
         ./gradlew clean --no-daemon --info
 
+    - name: Configure Build Environment
+      run: |
+        echo "Setting up environment variables for complex native module build..."
+        echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/27.0.12077973" >> $GITHUB_ENV
+        echo "NDK_ROOT=$ANDROID_HOME/ndk/27.0.12077973" >> $GITHUB_ENV
+        echo "ANDROID_NDK_ROOT=$ANDROID_HOME/ndk/27.0.12077973" >> $GITHUB_ENV
+
+    - name: Pre-Build Setup
+      run: |
+        # Ensure React Native CLI has proper permissions
+        chmod +x android/gradlew
+
+        # Create necessary directories
+        mkdir -p android/app/build/intermediates/assets/debug/createBundleDebugJsAndAssets/
+
+        # Validate Gradle wrapper
+        cd android
+        ./gradlew --version
+
     - name: Build APK
       run: |
         cd android
-        ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} --no-daemon --info --stacktrace
+
+        echo "Starting Android build with enhanced configuration..."
+
+        # Build with comprehensive error handling and timeout
+        timeout 30m ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
+          --no-daemon \
+          --info \
+          --stacktrace \
+          --warning-mode all \
+          --build-cache \
+          -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1024m -XX:+UseG1GC" \
+          -Dorg.gradle.workers.max=2 \
+          -Pandroid.useAndroidX=true \
+          -Pandroid.enableJetifier=true
       env:
-        # Ensure clean build environment
-        GRADLE_OPTS: "-Xmx4g -XX:MaxMetaspaceSize=512m"
+        # Enhanced memory configuration for complex build
+        GRADLE_OPTS: "-Xmx6g -XX:MaxMetaspaceSize=1024m -XX:+UseG1GC -Dfile.encoding=UTF-8"
         # React Native optimizations
         FLIPPER_DISABLE: true
-        # Android build optimizations
-        ORG_GRADLE_PROJECT_reactNativeArchitectures: x86,armeabi-v7a,arm64-v8a,x86_64
+        REACT_NATIVE_MAX_WORKERS: 2
+        # Android build optimizations for CI
+        ORG_GRADLE_PROJECT_reactNativeArchitectures: armeabi-v7a,arm64-v8a
+        # NDK configuration
+        ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_HOME }}
+        NDK_ROOT: ${{ env.NDK_ROOT }}
+        # New Architecture support
+        ORG_GRADLE_PROJECT_newArchEnabled: true
+        ORG_GRADLE_PROJECT_hermesEnabled: true
+        # Reduce parallel builds for stability
+        ORG_GRADLE_PROJECT_org.gradle.parallel: false
+
+    - name: Debug Build Issues (if build fails)
+      if: failure()
+      run: |
+        echo "=== BUILD FAILURE DEBUGGING ==="
+        echo "Checking for common issues..."
+
+        echo "=== Gradle Daemon Status ==="
+        ps aux | grep gradle || echo "No Gradle processes found"
+
+        echo "=== Available Disk Space ==="
+        df -h
+
+        echo "=== Memory Usage ==="
+        free -h
+
+        echo "=== Android SDK Components ==="
+        ls -la $ANDROID_HOME/platforms/ || echo "No platforms found"
+        ls -la $ANDROID_HOME/build-tools/ || echo "No build tools found"
+        ls -la $ANDROID_HOME/ndk/ || echo "No NDK found"
+
+        echo "=== Recent Gradle Logs ==="
+        find android -name "*.log" -type f -exec tail -20 {} \; 2>/dev/null || echo "No log files found"
+
+        echo "=== Build Directory Contents ==="
+        ls -la android/app/build/ 2>/dev/null || echo "Build directory not found"
 
     - name: Verify APK Generation
       run: |
