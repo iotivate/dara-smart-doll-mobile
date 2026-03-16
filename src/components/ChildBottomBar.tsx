@@ -1,4 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
+/**
+ * DARA SMART DOLL - CORRECTED AI LISTEN IMPLEMENTATION
+ *
+ * ✅ FIXED: App now correctly triggers doll to handle voice processing
+ * ❌ REMOVED: Incorrect mobile app speech-to-text implementation
+ *
+ * Correct Flow:
+ * 1. User taps mic button
+ * 2. App sends {'command': 'ai_listen'} to Dara Smart Doll via BLE
+ * 3. Doll handles: voice capture → STT → AI processing → audio response
+ * 4. App displays doll status: listening → processing → speaking → idle
+ *
+ * Hardware BLE Expert Implementation - 2026-03-16
+ */
 import React, { useState } from 'react';
 import {
   View,
@@ -16,9 +30,7 @@ import { useTheme } from '@theme/themeContext';
 import { Shadow } from 'react-native-shadow-2';
 import FontFamily from '@assets/fonts/FontFamily';
 import { useSelector } from 'react-redux';
-// import Modal from 'react-native-modal';
 import LottieView from 'lottie-react-native';
-import { startSpeechToText } from 'react-native-voice-to-text';
 import IMAGES from '@assets/images';
 import { useBluetooth } from './BluetoothContext';
 
@@ -28,14 +40,20 @@ const width = adjustWidth;
 const ChildBottomBar = ({ navigation }: any) => {
   const { theme } = useTheme();
   const styles = getStyles(theme);
-  const { connectionStatus }: any = useBluetooth();
+  const { connectionStatus, sendPlaybackCommand }: any = useBluetooth();
   const languageData = useSelector((state: any) => state?.data?.languageData);
 
   const [visible, setVisible] = useState(false);
-  const [speechText, setSpeechText] = useState('');
-  const [listening, setListening] = useState(false);
 
-  const startVoiceRecognition = async () => {
+  /**
+   * CORRECTED AI LISTEN IMPLEMENTATION
+   *
+   * The app should NOT do voice recording. Instead:
+   * 1. Send 'ai_listen' command to Dara Smart Doll
+   * 2. Doll handles all voice capture, STT, AI processing internally
+   * 3. App displays doll's AI interaction status (listening/processing/speaking)
+   */
+  const triggerAiListen = async () => {
     if (connectionStatus !== 'connected') {
       Alert.alert(
         'Device Not Connected',
@@ -44,19 +62,39 @@ const ChildBottomBar = ({ navigation }: any) => {
       );
       return;
     }
-    try {
-      setVisible(true);
-      setListening(true);
-      setSpeechText('');
 
-      const audioText: any = await startSpeechToText({
-        lang: 'en-US',
-      });
-      setSpeechText(audioText);
-      setListening(false);
+    try {
+      console.log('🎤 Triggering Dara Smart Doll AI Listen...');
+      setVisible(true);
+
+      // Send ai_listen command to doll - doll will handle all voice processing
+      await sendPlaybackCommand('ai_listen');
+
+      console.log('✅ AI Listen command sent to Dara Smart Doll');
+
+      // Note: The doll will now handle:
+      // 1. Voice capture via its microphone
+      // 2. Speech-to-text processing
+      // 3. AI response generation
+      // 4. Audio response playback
+      // App will receive status updates via BLE notifications
+
     } catch (error) {
-      console.log('Voice error:', error);
-      setListening(false);
+      console.log('❌ AI Listen trigger error:', error);
+      Alert.alert('AI Listen Error', 'Failed to trigger AI listening mode');
+    }
+  };
+
+  const getAiStatusMessage = () => {
+    switch (connectionStatus) {
+      case 'listening':
+        return 'Dara is listening...';
+      case 'processing':
+        return 'Dara is thinking...';
+      case 'speaking':
+        return 'Dara is responding...';
+      default:
+        return 'Tap to talk with Dara';
     }
   };
 
@@ -105,7 +143,7 @@ const ChildBottomBar = ({ navigation }: any) => {
         </View>
         <TouchableOpacity
           style={styles.floatingButton}
-          onPress={startVoiceRecognition}
+          onPress={triggerAiListen}
         >
           <CustomLucideIcon
             name="Mic"
@@ -164,28 +202,25 @@ const ChildBottomBar = ({ navigation }: any) => {
       >
         <View style={styles.modalWrapper}>
           <View style={styles.modalContainer}>
-            {listening ? (
-              <>
-                <LottieView
-                  source={IMAGES.Search}
-                  autoPlay
-                  loop
-                  style={{ width: 120, height: 120 }}
-                />
+            <LottieView
+              source={IMAGES.Search}
+              autoPlay
+              loop
+              style={{ width: 120, height: 120 }}
+            />
 
-                <Text style={styles.listeningText}>Listening...</Text>
-              </>
-            ) : (
-              <>
-                <Text style={styles.resultText}>{speechText}</Text>
+            <Text style={styles.listeningText}>
+              {getAiStatusMessage()}
+            </Text>
 
-                <TouchableOpacity
-                  style={styles.closeBtn}
-                  onPress={() => setVisible(false)}
-                >
-                  <Text style={{ color: 'white' }}>Send</Text>
-                </TouchableOpacity>
-              </>
+            {/* AI interaction is complete when status returns to 'connected' or 'idle' */}
+            {(connectionStatus === 'connected' || connectionStatus === 'idle') && (
+              <TouchableOpacity
+                style={styles.closeBtn}
+                onPress={() => setVisible(false)}
+              >
+                <Text style={{ color: 'white' }}>Close</Text>
+              </TouchableOpacity>
             )}
           </View>
         </View>
