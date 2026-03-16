@@ -135,10 +135,27 @@ jobs:
     - name: Make Gradlew Executable
       run: chmod +x android/gradlew
 
-    - name: Clean Build Directory
+    - name: Nuclear Gradle Reset (CI Version)
       run: |
+        echo "🔥 Performing nuclear Gradle reset for CI stability..."
+
+        # Kill any existing Gradle processes (CI version)
+        pkill -f gradle || echo "No existing Gradle processes"
+        pkill -f java.*gradle || echo "No existing Gradle Java processes"
+
+        # Clear Gradle caches aggressively
+        rm -rf ~/.gradle/caches/ || echo "No Gradle caches to clear"
+        rm -rf ~/.gradle/daemon/ || echo "No Gradle daemon to clear"
+        rm -rf ~/.gradle/wrapper/ || echo "No Gradle wrapper to clear"
+
+        # Clear project build directories
         cd android
-        ./gradlew clean --no-daemon --info
+        rm -rf app/build/ || echo "No app build dir"
+        rm -rf build/ || echo "No build dir"
+        rm -rf .gradle/ || echo "No .gradle dir"
+
+        # Clean with extreme prejudice
+        ./gradlew clean --no-daemon --info --stacktrace
 
     - name: Configure Build Environment
       run: |
@@ -159,39 +176,83 @@ jobs:
         cd android
         ./gradlew --version
 
-    - name: Build APK
+    - name: Build APK (Nuclear Approach with Retry)
       run: |
         cd android
 
-        echo "Starting Android build with enhanced configuration..."
+        echo "🔥 Starting nuclear Android build with retry mechanism..."
 
-        # Build with comprehensive error handling and timeout
-        timeout 30m ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
+        # Define the build command
+        BUILD_CMD="./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
           --no-daemon \
+          --max-workers=1 \
           --info \
           --stacktrace \
-          --warning-mode all \
-          --build-cache \
-          -Dorg.gradle.jvmargs="-Xmx6g -XX:MaxMetaspaceSize=1024m -XX:+UseG1GC" \
-          -Dorg.gradle.workers.max=2 \
+          --no-build-cache \
+          --rerun-tasks \
+          -Dorg.gradle.jvmargs=\"-Xmx7g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC -XX:G1HeapRegionSize=32m -XX:+UseStringDeduplication\" \
+          -Dorg.gradle.workers.max=1 \
+          -Dorg.gradle.parallel=false \
+          -Dorg.gradle.configureondemand=false \
           -Pandroid.useAndroidX=true \
-          -Pandroid.enableJetifier=true
+          -Pandroid.enableJetifier=true \
+          -Pandroid.enableR8.fullMode=false"
+
+        # Attempt 1: First build try
+        echo "📱 Build Attempt 1/2..."
+        if timeout 45m $BUILD_CMD; then
+          echo "✅ Build succeeded on first attempt!"
+          exit 0
+        else
+          echo "❌ Build attempt 1 failed. Starting nuclear reset for retry..."
+
+          # Nuclear reset between attempts
+          pkill -f gradle || echo "No Gradle processes to kill"
+          rm -rf ~/.gradle/daemon/ || echo "No daemon to clear"
+          rm -rf build/ app/build/ .gradle/ || echo "Build dirs cleared"
+
+          echo "💥 Performing second nuclear build attempt..."
+
+          # Attempt 2: Second build try with even more aggressive settings
+          if timeout 50m ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
+            --no-daemon \
+            --max-workers=1 \
+            --info \
+            --stacktrace \
+            --no-build-cache \
+            --refresh-dependencies \
+            --recompile-scripts \
+            --rerun-tasks \
+            -Dorg.gradle.jvmargs="-Xmx7g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC" \
+            -Dorg.gradle.workers.max=1 \
+            -Dorg.gradle.parallel=false \
+            -Pandroid.useAndroidX=true \
+            -Pandroid.enableJetifier=true; then
+            echo "✅ Build succeeded on retry attempt!"
+            exit 0
+          else
+            echo "💥 Both build attempts failed. Check logs for details."
+            exit 1
+          fi
+        fi
       env:
-        # Enhanced memory configuration for complex build
-        GRADLE_OPTS: "-Xmx6g -XX:MaxMetaspaceSize=1024m -XX:+UseG1GC -Dfile.encoding=UTF-8"
-        # React Native optimizations
+        # Nuclear memory configuration for CI stability
+        GRADLE_OPTS: "-Xmx7g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC -XX:G1HeapRegionSize=32m -XX:+UseStringDeduplication -Dfile.encoding=UTF-8"
+        # React Native optimizations for CI
         FLIPPER_DISABLE: true
-        REACT_NATIVE_MAX_WORKERS: 2
-        # Android build optimizations for CI
-        ORG_GRADLE_PROJECT_reactNativeArchitectures: armeabi-v7a,arm64-v8a
+        REACT_NATIVE_MAX_WORKERS: 1
+        # Android build optimizations - minimal for stability
+        ORG_GRADLE_PROJECT_reactNativeArchitectures: arm64-v8a
         # NDK configuration
         ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_HOME }}
         NDK_ROOT: ${{ env.NDK_ROOT }}
         # New Architecture support
         ORG_GRADLE_PROJECT_newArchEnabled: true
         ORG_GRADLE_PROJECT_hermesEnabled: true
-        # Reduce parallel builds for stability
+        # Force single-threaded builds for CI stability
         ORG_GRADLE_PROJECT_org.gradle.parallel: false
+        ORG_GRADLE_PROJECT_org.gradle.workers.max: 1
+        ORG_GRADLE_PROJECT_org.gradle.configureondemand: false
 
     - name: Debug Build Issues (if build fails)
       if: failure()
