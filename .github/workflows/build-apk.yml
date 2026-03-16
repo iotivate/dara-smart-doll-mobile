@@ -182,25 +182,22 @@ jobs:
 
         echo "🔥 Starting nuclear Android build with retry mechanism..."
 
-        # Define the build command
-        BUILD_CMD="./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
+        # Attempt 1: First build try with direct command execution (no variable)
+        echo "📱 Build Attempt 1/2..."
+        if timeout 45m ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
           --no-daemon \
           --max-workers=1 \
           --info \
           --stacktrace \
           --no-build-cache \
           --rerun-tasks \
-          -Dorg.gradle.jvmargs=\"-Xmx7g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC -XX:G1HeapRegionSize=32m -XX:+UseStringDeduplication\" \
+          -Dorg.gradle.jvmargs=-Xmx7g\ -XX:MaxMetaspaceSize=1536m\ -XX:+UseG1GC\ -XX:G1HeapRegionSize=32m\ -XX:+UseStringDeduplication \
           -Dorg.gradle.workers.max=1 \
           -Dorg.gradle.parallel=false \
           -Dorg.gradle.configureondemand=false \
           -Pandroid.useAndroidX=true \
           -Pandroid.enableJetifier=true \
-          -Pandroid.enableR8.fullMode=false"
-
-        # Attempt 1: First build try
-        echo "📱 Build Attempt 1/2..."
-        if timeout 45m $BUILD_CMD; then
+          -Pandroid.enableR8.fullMode=false; then
           echo "✅ Build succeeded on first attempt!"
           exit 0
         else
@@ -213,7 +210,7 @@ jobs:
 
           echo "💥 Performing second nuclear build attempt..."
 
-          # Attempt 2: Second build try with valid aggressive settings
+          # Attempt 2: Second build try with simplified JVM args
           if timeout 50m ./gradlew assemble${{ github.event.inputs.build_type || 'debug' }} \
             --no-daemon \
             --max-workers=1 \
@@ -222,7 +219,7 @@ jobs:
             --no-build-cache \
             --refresh-dependencies \
             --rerun-tasks \
-            -Dorg.gradle.jvmargs="-Xmx7g -XX:MaxMetaspaceSize=1536m -XX:+UseG1GC" \
+            -Dorg.gradle.jvmargs=-Xmx7g\ -XX:MaxMetaspaceSize=1536m\ -XX:+UseG1GC \
             -Dorg.gradle.workers.max=1 \
             -Dorg.gradle.parallel=false \
             -Pandroid.useAndroidX=true \
